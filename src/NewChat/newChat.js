@@ -1,6 +1,7 @@
 import React from 'react';
 import { FormControl, InputLabel, Input, Button, Paper, withStyles, CssBaseline, Typography } from '@material-ui/core';
 import styles from './styles';
+import '../assets/scss/newchat.scss';
 const firebase = require("firebase");
 
 class NewChatComponent extends React.Component {
@@ -18,19 +19,19 @@ class NewChatComponent extends React.Component {
     const { classes } = this.props;
 
     return(
-      <main className={classes.main}>
+      <main id="newChat" className={classes.main}>
         <CssBaseline/>
-        <Paper className={classes.paper}>
+        <Paper id="paper" className={classes.paper}>
           <Typography component="h1" variant="h5">Send A Message!</Typography>
           <form className={classes.form} onSubmit={(e) => this.submitNewChat(e)}>
             <FormControl fullWidth>
               <InputLabel htmlFor='new-chat-username'>
                   Enter Your Friend's Email
               </InputLabel>
-              <Input required 
+              <Input required
                 className={classes.input}
-                autoFocus 
-                onChange={(e) => this.userTyping('username', e)} 
+                autoFocus
+                onChange={(e) => this.userTyping('username', e)}
                 id='new-chat-username'>
               </Input>
             </FormControl>
@@ -38,16 +39,16 @@ class NewChatComponent extends React.Component {
               <InputLabel htmlFor='new-chat-message'>
                   Enter Your Message
               </InputLabel>
-              <Input required 
+              <Input required
                 className={classes.input}
-                onChange={(e) => this.userTyping('message', e)} 
+                onChange={(e) => this.userTyping('message', e)}
                 id='new-chat-message'>
               </Input>
             </FormControl>
             <Button fullWidth variant='contained' color='primary' className={classes.submit} type='submit'>Send</Button>
           </form>
           {
-            this.state.serverError ? 
+            this.state.serverError ?
             <Typography component='h5' variant='h6' className={classes.errorText}>
               Unable to locate the user
             </Typography> :
@@ -68,7 +69,7 @@ class NewChatComponent extends React.Component {
       case 'username':
         this.setState({ username: e.target.value });
         break;
-      
+
       case 'message':
         this.setState({ message: e.target.value });
         break;
@@ -100,7 +101,7 @@ class NewChatComponent extends React.Component {
 
   chatExists = async () => {
     const docKey = this.buildDocKey();
-    const chat = await 
+    const chat = await
       firebase
       .firestore()
       .collection('chats')
@@ -110,7 +111,7 @@ class NewChatComponent extends React.Component {
     return chat.exists;
   }
   userExists = async () => {
-    const usersSnapshot = await 
+    const usersSnapshot = await
     firebase
       .firestore()
       .collection('users')

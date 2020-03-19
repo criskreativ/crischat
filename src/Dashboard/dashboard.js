@@ -4,6 +4,7 @@ import ChatListComponent from '../ChatList/chatList';
 import ChatViewComponent from '../ChatView/chatView';
 import ChatTextBoxComponent from '../ChatTextBox/chatTextBox';
 import styles from './styles';
+import '../assets/scss/dashboard.scss';
 import { Button, withStyles } from '@material-ui/core';
 const firebase = require("firebase");
 
@@ -35,26 +36,26 @@ class DashboardComponent extends React.Component {
     if(this.state.email) {
       return(
         <div className='dashboard-container' id='dashboard-container'>
-          <ChatListComponent history={this.props.history} 
-            userEmail={this.state.email} 
-            selectChatFn={this.selectChat} 
-            chats={this.state.chats} 
+          <ChatListComponent history={this.props.history}
+            userEmail={this.state.email}
+            selectChatFn={this.selectChat}
+            chats={this.state.chats}
             selectedChatIndex={this.state.selectedChat}
             newChatBtnFn={this.newChatBtnClicked}>
           </ChatListComponent>
           {
-            this.state.newChatFormVisible ? null : <ChatViewComponent 
-              user={this.state.email} 
+            this.state.newChatFormVisible ? null : <ChatViewComponent
+              user={this.state.email}
               chat={this.state.chats[this.state.selectedChat]}>
             </ChatViewComponent>
           }
-          { 
-            this.state.selectedChat !== null && !this.state.newChatFormVisible ? <ChatTextBoxComponent userClickedInputFn={this.messageRead} submitMessageFn={this.submitMessage}></ChatTextBoxComponent> : null 
+          {
+            this.state.selectedChat !== null && !this.state.newChatFormVisible ? <ChatTextBoxComponent userClickedInputFn={this.messageRead} submitMessageFn={this.submitMessage}></ChatTextBoxComponent> : null
           }
           {
             this.state.newChatFormVisible ? <NewChatComponent goToChatFn={this.goToChat} newChatSubmitFn={this.newChatSubmit}></NewChatComponent> : null
           }
-          <Button onClick={this.signOut} className={classes.signOutBtn}>Sign Out</Button>
+          <Button onClick={this.signOut} id="signOutBtn" className={classes.signOutBtn}>Sign Out</Button>
         </div>
       );
     } else {
@@ -90,7 +91,7 @@ class DashboardComponent extends React.Component {
 
   newChatSubmit = async (chatObj) => {
     const docKey = this.buildDocKey(chatObj.sendTo);
-    await 
+    await
       firebase
         .firestore()
         .collection('chats')

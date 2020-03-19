@@ -11,22 +11,23 @@ class AppContainer extends React.Component {
     this.checkForSavedAuth();
   }
 
-  // constructor() {
-  //   super();
-  //   firebase.initializeApp({
-  //     apiKey: "AIzaSyAlWBvbvLv7dT6_RYnlCeZbOcotpeBU3Y8",
-  //     authDomain: "im-app-tutorial.firebaseapp.com",
-  //     databaseURL: "https://im-app-tutorial.firebaseio.com",
-  //     projectId: "im-app-tutorial",
-  //     storageBucket: "im-app-tutorial.appspot.com",
-  //     messagingSenderId: "199544684635",
-  //     appId: "1:199544684635:web:fb388e2c181f0476"
-  //   });
-  //   this.db = firebase.firestore();
-  //   this.state = {
-  //     user: null
-  //   };
-  // }
+  constructor() {
+    super();
+    firebase.initializeApp({
+      apiKey: "AIzaSyAGWlAc1AcTdD-YWtQ5x3U82I1uIA_jtuE",
+      authDomain: "chat-debf4.firebaseapp.com",
+      databaseURL: "https://chat-debf4.firebaseio.com",
+      projectId: "chat-debf4",
+      storageBucket: "chat-debf4.appspot.com",
+      messagingSenderId: "576487033453",
+      appId: "1:576487033453:web:bdc5ef396aaf5d08d78d64",
+      measurementId: "G-XLCCSNG0YE"
+    });
+    this.db = firebase.firestore();
+    this.state = {
+      user: null
+    };
+  }
 
   render() {
     if(this.state.user)

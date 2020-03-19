@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './styles';
+import '../assets/scss/chatview.scss';
 import { withStyles } from '@material-ui/core/styles';
 
 class ChatViewComponent extends React.Component {
@@ -24,14 +25,14 @@ class ChatViewComponent extends React.Component {
     } else if(this.props.chat !== undefined) {
       return(
         <div>
-          <div className={classes.chatHeader}>
-            Your conversation with {this.props.chat.users.filter(_usr => _usr !== this.props.user)[0]}
+          <div id="chatHeader" className={classes.chatHeader}>
+            {this.props.chat.users.filter(_usr => _usr !== this.props.user)[0]} - Online
           </div>
           <main id='chatview-container' className={classes.content}>
             {
               this.props.chat.messages.map((_msg, _index) => {
                 return(
-                <div key={_index} className={_msg.sender === this.props.user ? classes.userSent : classes.friendSent}>
+                <div key={_index} id={_msg.sender === this.props.user ? 'userSent' : 'friendSent'} className={_msg.sender === this.props.user ? classes.userSent : classes.friendSent}>
                   {_msg.message}
                 </div>
                 )

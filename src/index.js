@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import { Route, BrowserRouter as Router } from 'react-router-dom';
+import './assets/scss/index.scss';
+import logo from './assets/icons/logo.svg';
+import { Route, Link, BrowserRouter as Router } from 'react-router-dom'
 import * as serviceWorker from './serviceWorker';
 import LoginComponent from './Login/login';
 import SignupComponent from './Signup/signup';
@@ -11,24 +12,54 @@ const firebase = require("firebase");
 require("firebase/firestore"); // Required for side-effects?????
 
 firebase.initializeApp({
-  apiKey: "AIzaSyAlWBvbvLv7dT6_RYnlCeZbOcotpeBU3Y8",
-  authDomain: "im-app-tutorial.firebaseapp.com",
-  databaseURL: "https://im-app-tutorial.firebaseio.com",
-  projectId: "im-app-tutorial",
-  storageBucket: "im-app-tutorial.appspot.com",
-  messagingSenderId: "199544684635",
-  appId: "1:199544684635:web:fb388e2c181f0476"
+  apiKey: "AIzaSyAGWlAc1AcTdD-YWtQ5x3U82I1uIA_jtuE",
+  authDomain: "chat-debf4.firebaseapp.com",
+  databaseURL: "https://chat-debf4.firebaseio.com",
+  projectId: "chat-debf4",
+  storageBucket: "chat-debf4.appspot.com",
+  messagingSenderId: "576487033453",
+  appId: "1:576487033453:web:bdc5ef396aaf5d08d78d64",
+  measurementId: "G-XLCCSNG0YE"
 });
+
 
 const routing = (
   <Router>
-    <div id='routing-container'>
-      <Route path='/login' component={LoginComponent}></Route>
-      <Route path='/signup' component={SignupComponent}></Route>
-      <Route path='/dashboard' component={DashboardComponent}></Route>
+    <div className="container" id='routing-container'>
+    <Route path='/signup'>
+      <div className="container__home"><Link to="/">Home</Link></div>
+    </Route>
+    <Route path='/login'>
+      <div className="container__home"><Link to="/">Home</Link></div>
+    </Route>
+    <Route exact path='/'>
+    <header>
+      <nav>
+        <ul>
+          <li>
+            <Link to="/signup">Sign Up</Link>
+          </li>
+          <li>
+            <Link to="/login">Login</Link>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    </Route>
+
+    <Route exact path='/'>
+      <div className="home">
+        <h1>CrisChat App</h1>
+        <div className="logo"><img src={logo} alt="logo"/></div>
+      </div>
+    </Route>
+
+    <Route path='/signup' component={SignupComponent}></Route>
+    <Route path='/login' component={LoginComponent}></Route>
+    <Route path='/dashboard' component={DashboardComponent}></Route>
     </div>
   </Router>
-);
+)
 
 ReactDOM.render(routing, document.getElementById('root'));
 
