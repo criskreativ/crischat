@@ -20,6 +20,7 @@ class NewChatComponent extends React.Component {
 
     return(
       <main id="newChat" className={classes.main}>
+      <div id="chatHeader"></div>
         <CssBaseline/>
         <Paper id="paper" className={classes.paper}>
           <Typography component="h1" variant="h5">Send A Message!</Typography>

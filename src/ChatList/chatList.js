@@ -11,7 +11,8 @@ import '../assets/scss/chatlist.scss';
 import Divider from '@material-ui/core/Divider';
 import Button from '@material-ui/core/Button';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
-import NotificationImportant from '@material-ui/icons/NotificationImportant';
+import { ReactComponent as NotificationImportant } from '../assets/icons/unread.svg';
+
 
 class ChatListComponent extends React.Component {
 
@@ -53,7 +54,7 @@ class ChatListComponent extends React.Component {
                           }/>
                           {
                             _chat.receiverHasRead === false && !this.userIsSender(_chat) ?
-                            <ListItemIcon><NotificationImportant className={classes.unreadMessage}></NotificationImportant></ListItemIcon> :
+                            <ListItemIcon><NotificationImportant id="unreadMessage" className={classes.unreadMessage}></NotificationImportant></ListItemIcon> :
                             null
                           }
                       </ListItem>

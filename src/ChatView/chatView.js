@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './styles';
 import '../assets/scss/chatview.scss';
+import { Link } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
 
 class ChatViewComponent extends React.Component {
@@ -16,6 +17,7 @@ class ChatViewComponent extends React.Component {
       container.scrollTo(0, container.scrollHeight);
   }
 
+
   render() {
 
     const { classes } = this.props;
@@ -26,7 +28,7 @@ class ChatViewComponent extends React.Component {
       return(
         <div>
           <div id="chatHeader" className={classes.chatHeader}>
-            {this.props.chat.users.filter(_usr => _usr !== this.props.user)[0]} - Online
+            {this.props.chat.users.filter(_usr => _usr !== this.props.user)[0]}
           </div>
           <main id='chatview-container' className={classes.content}>
             {
@@ -46,5 +48,7 @@ class ChatViewComponent extends React.Component {
     }
   }
 }
+
+
 
 export default withStyles(styles)(ChatViewComponent);

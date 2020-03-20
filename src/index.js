@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './assets/scss/index.scss';
-import logo from './assets/icons/logo.svg';
+import logo from './assets/icons/logo-2.svg';
 import { Route, Link, BrowserRouter as Router } from 'react-router-dom'
 import * as serviceWorker from './serviceWorker';
 import LoginComponent from './Login/login';
